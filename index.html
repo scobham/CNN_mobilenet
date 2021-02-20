@@ -55,101 +55,11 @@
     </div>
 
     <!-- Place your code in the script tag below. You can also use an external .js file -->
-    <script>
-        // Notice there is no 'import' statement. 'mobilenet' and 'tf' is
-        // available on the index-page because of the script tag above.
-
-        const img1 = document.getElementById('img1');
-        const img2 = document.getElementById('img2');
-        const img3 = document.getElementById('img3');
-        const img4 = document.getElementById('img4');
-
-        // Load the model.
-        //   (async () => {
-        //       const model = await mobilenet.load();
-        //       const predictions = model.classify(img)
-
-        //       console.log(predictions);
-
-        //     //   mobilenet.load().then(model => {
-        //     //     // Classify the image.
-        //     //     model.classify(img).then(predictions => {
-        //     //       console.log('Predictions: ');
-        //     //       console.log(predictions);
-        //     //     });
-        //     //   });
-
-        //   })()
-
-
-
-        async function predict(img, model) {
-            // const model = await mobilenet.load();
-            const predictions = await model.classify(img);
-            console.log(predictions);
-            console.log(predictions[0].className);
-            console.log(Math.round(predictions[0].probability * 100, 3), '%');
-            console.log(img.id);
-            pred = document.querySelector(`.${img.id} h2`)
-            pred.innerHTML = `<p>` + predictions[0].className + `</p>`;
-            accuracy = document.querySelector(`.${img.id} h3`)
-            accuracy.innerHTML = `<p>` + Math.round(predictions[0].probability * 100, 3) + `%</p>`;
-            return predictions
-        }
-
-        (async () => {
-            var model = await mobilenet.load();
-
-            const result1 = await predict(img1, model);
-            const result2 = await predict(img2, model);
-            const result3 = await predict(img3, model);
-            const result4 = await predict(img4, model);
-        })();
-        // (async () => {
-        //     const result1 = await predict(img1)
-        //     console.log(result1[0].className)
-        //     predection1 = document.querySelector(".img1 h2");
-        //     predection1.innerHTML = `<p>` + result1[0].className + `</p>`;
-        // })()
-
-        // (result1 = predict(img1))
-        //     .then(() => {
-        //         predection1 = document.querySelector(".img1 h2");
-        //     })
-        //     .then(() => {
-        //         predection1.innerHTML = `Foo`;
-        //         console.log(typeof result1[0].className);
-        //     });
-
-        // console.log(`Image 1: ${result1[0].className}`);
-        // predection1 = document.querySelector(".img1 h2");
-        // predection1.innerHTML = `${result1[0].className}`;
-        // console.log(typeof (result1[0].className));
-        // predection1.innerHTML = `Foo`;
-        // predection1.innerHTML = `<p>` + result1[0].className + `</p>`;
-
-        // const result2 = predict(img2);
-        // console.log(`Image 2: ${result2}`);
-        // const result3 = predict(img3);
-        // console.log(`Image 3: ${result3}`);
-        // const result4 = predict(img4);
-            // console.log(`Image 4: ${result4}`);
-
-        // let p = new Promise((resolve, reject) => {
-        //     let result1 = predict(img1);
-        //     if (result1) {
-        //         resolve('Success')
-        //     } else {
-        //         reject('Failed')
-        //     }
-        // })
-
-
+    <script src="scripts.js">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
-
 </body>
 
 </html>
